@@ -6,7 +6,6 @@ import {
 import ToggleButton from './ToggleButton.js';
 import user1 from "../../assets/images/users/user1.jpg";
 import user5 from "../../assets/images/users/user5.jpg";
-import { Link, useNavigate } from "react-router-dom"
 
 
 
@@ -33,8 +32,6 @@ const ProjectTables = () => {
   const [editFormErrors, setEditFormErrors] = useState({});
   const [userToDelete, setUserToDelete] = useState(null);
 
-
-  const navigate = useNavigate()
   
   useEffect(() => {
     // Fetch data from the API

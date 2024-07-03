@@ -17,7 +17,7 @@ const ThemeRoutes = [
     path: "/",
     element: <FullLayout />,
     children: [
-      { path: "/", element: <Navigate to="/profile" /> },
+      { path: "/", element: <Navigate to="/profile/2" /> },
       { path: "/profile/:userId", exact: true, element: <Dashboard /> },
       { path: "/admin/users", exact: true, element: <Tables /> },
     ],
