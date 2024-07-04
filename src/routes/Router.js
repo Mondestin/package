@@ -8,7 +8,7 @@ const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
 
 const Dashboard = lazy(() => import("../views/Dashboard.js"));
 const Tables = lazy(() => import("../views/Tables.js"));
-
+const RedirectToGoogle = lazy(() => import("../views/RedirectToGoogle.js"));
 
 /*****Routes******/
 
@@ -17,9 +17,10 @@ const ThemeRoutes = [
     path: "/",
     element: <FullLayout />,
     children: [
-      { path: "/", element: <Navigate to="/profile/2" /> },
+      { path: "/", element: <Navigate to="/admin/users" /> },
       { path: "/profile/:userId", exact: true, element: <Dashboard /> },
       { path: "/admin/users", exact: true, element: <Tables /> },
+      { path: "/not", exact: true, element: <RedirectToGoogle /> },
     ],
   },
 ];

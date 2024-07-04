@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 const navigation = [
   {
     title: "Profile",
-    href: "/profile/3",
+    href: "/",
     icon: "bi bi-person",
   },
   {

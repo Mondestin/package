@@ -7,8 +7,6 @@ import ToggleButton from './ToggleButton.js';
 import user1 from "../../assets/images/users/user1.jpg";
 import user5 from "../../assets/images/users/user5.jpg";
 
-
-
 const ProjectTables = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -32,13 +30,11 @@ const ProjectTables = () => {
   const [editFormErrors, setEditFormErrors] = useState({});
   const [userToDelete, setUserToDelete] = useState(null);
 
-  
   useEffect(() => {
     // Fetch data from the API
     fetch('https://microback.onrender.com/api/users')
       .then(response => response.json())
       .then(data => {
-        
         setUsers(data);
         setLoading(false);
       })
@@ -132,7 +128,6 @@ const ProjectTables = () => {
       console.error('Error saving data:', error);
     });
   };
-  
 
   const handleEditFormSubmit = (e) => {
     e.preventDefault();
@@ -162,16 +157,12 @@ const ProjectTables = () => {
         gender: ''
       });
       setEditFormErrors({});
-      e.preventDefault();
-      window.location.reload();
     })
     .catch(error => {
       console.error('Error updating data:', error);
     });
   };
   
-  
-
   const handleDelete = () => {
     // API call to delete the user
     fetch(`https://microback.onrender.com/api/users/${userToDelete.id}`, {
@@ -230,7 +221,7 @@ const ProjectTables = () => {
                   <td>
                     <div className="d-flex align-items-center p-2">
                       <img
-                        src={index % 2 === 0 ? user1 : user5}  // Alternating avatar images for demo
+                        src={index % 2 === 0 ? user1 : user5}
                         className="rounded-circle"
                         alt="avatar"
                         width="45"
@@ -246,19 +237,19 @@ const ProjectTables = () => {
                   <td>{user.gender}</td>
                   <td>{user.lastLogin || 'N/A'}</td>
                   <td>
-                     <ToggleButton />
+                    <ToggleButton userId={user.id} initialStatus={user.cardStatus} />
                   </td>
                   <td>
                     <div className="button-group">
-                        <Button className="btn" color='warning' size="sm" onClick={() => toggleEditModal(user)}>
-                          <i className="bi bi-pencil-square"></i>
-                        </Button>
-                        <Button  className="btn"color='primary' size="sm"><i class="bi bi-arrow-clockwise"></i></Button>
-                        <Button  className="btn" color='danger' size="sm" onClick={() => toggleDeleteModal(user)}>
-                          <i className="bi bi-trash3"></i>
-                        </Button>
-                      </div>
-                    </td>
+                      <Button className="btn" color='warning' size="sm" onClick={() => toggleEditModal(user)}>
+                        <i className="bi bi-pencil-square"></i>
+                      </Button>
+                      <Button className="btn" color='primary' size="sm"><i className="bi bi-arrow-clockwise"></i></Button>
+                      <Button className="btn" color='danger' size="sm" onClick={() => toggleDeleteModal(user)}>
+                        <i className="bi bi-trash3"></i>
+                      </Button>
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>

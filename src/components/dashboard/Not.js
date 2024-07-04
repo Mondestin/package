@@ -1,21 +1,18 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import UserCard from '../components/dashboard/UserCard.js';
+import user1 from "../../assets/images/users/221.jpg";
 
-const Dashboard = () => {
-
-
-  // Use the userId parameter as needed in your component
-
+const Not = () => {
   return (
     <Container>
       <Row className="justify-content-center">
         <Col md="6" lg="4">
-          <UserCard />
+        <img src={user1} alt="User" style={{ width: '100%', borderRadius: '10px' }} />
+
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default Dashboard;
+export default Not;
