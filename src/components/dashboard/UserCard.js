@@ -43,7 +43,11 @@ const UserCard = () => {
       />
       <CardBody>
         <CardTitle tag="h5">{user.name}</CardTitle>
+        <CardSubtitle className="mb-2 text-muted" tag="h6">{user.gender}</CardSubtitle>
+
+
         <CardSubtitle className="mb-2 text-muted" tag="h6">{user.email}</CardSubtitle>
+        <CardSubtitle className="mb-2 text-muted" tag="h6">{user.phone}</CardSubtitle>
       </CardBody>
     </Card>
   );
