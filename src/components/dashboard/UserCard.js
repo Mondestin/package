@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardBody, CardImg, CardTitle, CardSubtitle, Spinner } from 'reactstrap';
-import { useParams } from 'react-router-dom';
+import { useParams , useNavigate} from 'react-router-dom';
 import user1 from "../../assets/images/users/user1.jpg";
 const UserCard = () => {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch user data from the API
@@ -15,13 +16,21 @@ const UserCard = () => {
       .then(data => {
         setUser(data);
         setLoading(false);
+        // Check cardStatus and redirect if false
+
+        console.error('Data', data.cardStatus);
+
+
+        if (data.cardStatus === true) {
+           navigate('/not');
+        }
       })
       .catch(error => {
         console.error('Error fetching user data:', error);
         setError('Error fetching user data');
         setLoading(false);
       });
-  }, [userId]);
+  }, [userId, navigate]);
 
   if (loading) {
     return <Spinner color="primary" />;
@@ -45,6 +54,7 @@ const UserCard = () => {
         <CardTitle tag="h5">{user.name}</CardTitle>
         <CardSubtitle className="mb-2 text-muted" tag="h6">{user.gender}</CardSubtitle>
 
+        <CardSubtitle className="mb-2 text-muted" tag="h6">{user.email}</CardSubtitle>
 
         <CardSubtitle className="mb-2 text-muted" tag="h6">{user.email}</CardSubtitle>
         <CardSubtitle className="mb-2 text-muted" tag="h6">{user.phone}</CardSubtitle>
